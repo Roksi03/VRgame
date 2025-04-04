@@ -5,7 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class simpleChest : MonoBehaviour
 { 
-    [Header("components")]
+   [Header("components")]
    [SerializeField] private GameObject chest;
    [SerializeField] private Transform lid;
    [SerializeField] private float openAngle = 90f;
