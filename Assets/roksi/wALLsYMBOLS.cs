@@ -5,9 +5,9 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class wALLsYMBOLS : MonoBehaviour
 {
-    public GameObject symbol;
+    public GameObject[]symbol;
 
-    public Transform point;
+    public Transform[] point;
 
     private XRSimpleInteractable interactable;
 
@@ -31,18 +31,28 @@ public class wALLsYMBOLS : MonoBehaviour
     {
         if (symbol != null)
         {
-            Instantiate(symbol, point.position, Quaternion.identity);
             StartCoroutine(spawn());
+
+
         }
     }
 
     private IEnumerator spawn()
     {
-        yield return new WaitForSeconds(3);
-        if(symbol != null)
+        int c = Mathf.Min(symbol.Length, point.Length);
+
+        for(int i = 0; i < c; i++)
         {
-            Destroy(symbol);
+            GameObject newSymbol = Instantiate(symbol[i], point[i].position, Quaternion.identity);
+            yield return new WaitForSeconds(1);
+            Destroy(newSymbol);
+            yield return new WaitForSeconds(1);
         }
+       
+
+
+        
+        
       
     }
 }
