@@ -6,7 +6,6 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 public class simpleChest : MonoBehaviour
 { 
    [Header("components")]
-   [SerializeField] private GameObject chest;
    [SerializeField] private Transform lid;
    [SerializeField] private float openAngle = 90f;
    [SerializeField] private float openSpeed = 2f;
@@ -15,30 +14,58 @@ public class simpleChest : MonoBehaviour
    [SerializeField] private AudioSource audioSource;
    [SerializeField] private AudioClip openSound;
    
+   [SerializeField] private Vector3 rotationAxis = new Vector3(-1, 0, 0);
+
    private bool isOpen = false;
    private Quaternion initialRotation;
    private Quaternion targetRotation;
-   private XRSimpleInteractable interactable;
+   private XRGrabInteractable interactable;
 
     private void Awake()
     {
-        interactable = GetComponent<XRSimpleInteractable>();
+        interactable = GetComponent<XRGrabInteractable>();
         if (interactable == null )
         {
-            interactable = gameObject.AddComponent<XRSimpleInteractable>();
+            interactable = gameObject.AddComponent<XRGrabInteractable>();
+
+            interactable.movementType = XRBaseInteractable.MovementType.Instantaneous;
+            interactable.trackPosition = false;
+            interactable.trackRotation = false;
         }
 
         if (lid != null) //zapisz poczatkowa rotacje chest lid
         {
             initialRotation = lid.localRotation;
-            targetRotation = initialRotation * Quaternion.Euler(-openAngle, 0, 0);
+            targetRotation = initialRotation * Quaternion.Euler(rotationAxis.normalized * openAngle);
+        }
+        else
+        {
+            Debug.Log("lid transform is not assigned");
         }
 
         interactable.selectEntered.AddListener(OnInteract); // dodaj listener do interakcjii
+
+        if (GetComponent<Collider>() == null)
+        {
+            BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
+
+            boxCollider.size = new Vector3(1f, 0.5f, 1f);
+            boxCollider.center = new Vector3(0f, 0.25f, 0f);
+        }
+
+        if (GetComponent<Rigidbody>() == null)
+        {
+            Rigidbody rb = gameObject.AddComponent<Rigidbody>();
+            rb.isKinematic = true;
+        }
+
+        Debug.Log("simpleChest initialized, interactable setup complete");
     }
 
     private void OnInteract(SelectEnterEventArgs args)
     {
+        Debug.Log("chest interaction detected");
+
         if (!isOpen)
         {
             OpenChest();
@@ -50,6 +77,8 @@ public class simpleChest : MonoBehaviour
         if (isOpen) return;
 
         isOpen = true;
+
+        Debug.Log("opening chest...");
 
         if (audioSource != null && openSound != null )
         {
@@ -72,6 +101,8 @@ public class simpleChest : MonoBehaviour
             }
             yield return null;
         }
+
+        Debug.Log("chest fully opened");
     }
 
 }
