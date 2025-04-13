@@ -5,13 +5,13 @@ using System.Collections.Generic;
 public class BowlScipt : MonoBehaviour
 {
 
-   [SerializeField] private int Ball = 0;
+
 
     public GameObject ItemPrefab;
 
     public Transform itemPoint;
 
-    private List<GameObject> balls = new List<GameObject>();
+    [SerializeField] private List<GameObject> balls = new List<GameObject>();
 
     private void Start()
     {
@@ -20,21 +20,28 @@ public class BowlScipt : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Ball"))
+        if (other.CompareTag("Ball" )&& !balls.Contains(other.gameObject))
         {
             Debug.Log("kulka");
-            Ball += 1;
+           
             balls.Add(other.gameObject);
         }
-        if(Ball == 2)
+        if(balls.Count == 2)
         {
             foreach(GameObject ball in balls)
             {
                 Destroy(ball);
             }
            balls.Clear();
-            Ball = 0;
+          
             GameObject newItem = Instantiate(ItemPrefab, itemPoint.position, itemPoint.rotation);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Ball")&& balls.Contains(other.gameObject))
+        {
+            balls.Remove(other.gameObject);
         }
     }
 }
