@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Anchor
   - Ball
+  - ob
   layers:
   - Default
   - TransparentFX
