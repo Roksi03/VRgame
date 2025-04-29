@@ -7,6 +7,8 @@ TagManager:
   - Anchor
   - Ball
   - ob
+  - click1
+  - click2
   layers:
   - Default
   - TransparentFX
