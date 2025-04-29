@@ -1,69 +1,63 @@
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-public class Torch : MonoBehaviour
+public class TorchInteractable : XRSimpleInteractable
 {
-
+    [Header("torch settings")]
     public GameObject flameEffect;
-
     public Light torchLight;
-
     public AudioClip igniteSound;
+    public float lightIntensity = 1.5f;
+
+    [Header("events")]
+    public UnityEvent onTorchLit;
 
     private bool isLit = false;
     private AudioSource audioSource;
 
-    public UnityEvent onTorchLit;
-
-    private XRSimpleInteractable interactable;
-
-    void Start()
+    protected override void Awake()
     {
-        if (flameEffect != null)
-            flameEffect.SetActive(false);
+        base.Awake();
 
-        if (torchLight != null)
-            torchLight.enabled = false;
-
-        audioSource = GetComponent<AudioSource>();
         if (audioSource == null && igniteSound != null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
 
-        SetUpInteraction(); 
-    }
+        if (flameEffect != null)
+            flameEffect.SetActive(false);
 
-    private void SetUpInteraction()
-    {
-        XRSimpleInteractable interactable = GetComponent<XRSimpleInteractable>();
-        if (interactable == null)
+        if (torchLight != null)
         {
-            interactable = gameObject.AddComponent<XRSimpleInteractable>();
+            torchLight.enabled = false;
+            torchLight.intensity = lightIntensity;
         }
 
-        interactable.selectEntered.RemoveAllListeners();
-
+        // SprawdŸ czy mamy collider
         if (GetComponent<Collider>() == null)
         {
+            Debug.LogWarning("Dodajê domyœlny collider do pochodni. Zalecane jest rêczne ustawienie odpowiedniego collidera.");
             BoxCollider collider = gameObject.AddComponent<BoxCollider>();
         }
     }
 
-    private void OnSelectEntered(SelectEnterEventArgs args)
+    protected override void OnEnable()
     {
-        ToggleTorch();
+        base.OnEnable();
+        selectEntered.AddListener(OnSelectEntered);
     }
 
-    public void ToggleTorch()
+    protected override void OnDisable()
     {
-        if (!isLit)
-        {
-            LightTorch();
-        }
+        base.OnDisable();
+        selectEntered.RemoveListener(OnSelectEntered);
+    }
+
+    private void OnSelectEntered(SelectEnterEventArgs args)
+    {
+        LightTorch();
     }
 
     public void LightTorch()
@@ -86,11 +80,14 @@ public class Torch : MonoBehaviour
 
         onTorchLit.Invoke();
 
-        Debug.Log("torch is Lit" + gameObject.name);
+        Debug.Log("torch is Lit " + gameObject.name);
     }
 
     public void Extinguish()
     {
+        if (!isLit)
+            return;
+
         isLit = false;
 
         if (flameEffect != null)
@@ -99,6 +96,11 @@ public class Torch : MonoBehaviour
         if (torchLight != null)
             torchLight.enabled = false;
 
-        Debug.Log("torch got extinguised" + gameObject.name);
+        Debug.Log("torch got extinguised " + gameObject.name);
+    }
+
+    public bool IsLit()
+    {
+        return isLit;
     }
 }
