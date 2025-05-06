@@ -6,7 +6,9 @@ TagManager:
   tags:
   - Anchor
   - Ball
-  - VRController
+  - ob
+  - click1
+  - click2
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - item1
   - 
   - 
   - 

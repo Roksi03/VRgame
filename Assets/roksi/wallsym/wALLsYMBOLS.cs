@@ -27,11 +27,12 @@ public class wALLsYMBOLS : MonoBehaviour
             interactable.selectEntered.RemoveListener(symbolsSpawn);
         }
     }
-    private void symbolsSpawn(SelectEnterEventArgs a)
+    public void symbolsSpawn(SelectEnterEventArgs a)
     {
         if (symbol != null)
         {
             StartCoroutine(spawn());
+            DoSomething.Instance.CanClick = true;
 
 
         }
