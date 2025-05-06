@@ -4,69 +4,72 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class GrabableNote : MonoBehaviour
 {
-    [Header("settings")]
-    [SerializeField] private GameObject noteVisual; //object notatka z tekstura lub tekstem
-    [SerializeField] private Transform initialPosition; // poczatkowa pozycja kartki
-    
-    [Header("sounds")]
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip grabSound;
-    [SerializeField] private AudioClip releaseSound;
-    
+    [Header("Interakcja")]
+    [SerializeField] private bool canPickUp = true;
+    [SerializeField] private bool snapToHand = true;
+
     private XRGrabInteractable grabInteractable;
     private Rigidbody noteRigidbody;
-    private bool wasGrabbed = false;
 
-    private void Awake()
+    private void Start()
     {
+        // Upewnij siê, ¿e obiekt ma Rigidbody
         noteRigidbody = GetComponent<Rigidbody>();
         if (noteRigidbody == null)
         {
             noteRigidbody = gameObject.AddComponent<Rigidbody>();
+            Debug.Log("Added Rigidbody to note");
         }
 
-        //fizyka- konfiguracja
+        // Konfiguracja fizyki
+        noteRigidbody.useGravity = true;
+        noteRigidbody.isKinematic = false;
         noteRigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         noteRigidbody.interpolation = RigidbodyInterpolation.Interpolate;
 
-        //dodanie i konfiguracja XRGrabInteractable
+        // Upewnij siê, ¿e obiekt ma collider
+        if (GetComponent<Collider>() == null)
+        {
+            BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
+            boxCollider.size = new Vector3(0.2f, 0.001f, 0.3f);
+            Debug.Log("Added BoxCollider to note");
+        }
+
+        // Dodaj i skonfiguruj XRGrabInteractable
         grabInteractable = GetComponent<XRGrabInteractable>();
         if (grabInteractable == null)
         {
             grabInteractable = gameObject.AddComponent<XRGrabInteractable>();
+            Debug.Log("Added XRGrabInteractable to note");
         }
 
-        grabInteractable.movementType = XRBaseInteractable.MovementType.VelocityTracking;
-        grabInteractable.throwOnDetach = true;
+        // Konfiguracja interakcji dla XRGrabInteractable
+        grabInteractable.movementType = snapToHand ?
+            XRBaseInteractable.MovementType.Instantaneous :
+            XRBaseInteractable.MovementType.VelocityTracking;
 
-        //dodajemy listenery do zdarzen
+        grabInteractable.throwOnDetach = true;
+        grabInteractable.trackPosition = true;
+        grabInteractable.trackRotation = true;
+        grabInteractable.retainTransformParent = false;
+
+        // W³¹czenie/Wy³¹czenie mo¿liwoœci podniesienia
+        grabInteractable.enabled = canPickUp;
+
+        // Dodaj listenery do zdarzeñ
         grabInteractable.selectEntered.AddListener(OnGrab);
         grabInteractable.selectExited.AddListener(OnRelease);
 
-        if (initialPosition == null)
-        {
-            initialPosition = new GameObject(gameObject.name + "_InitialPosition").transform;
-            initialPosition.position = transform.position;
-            initialPosition.rotation = transform.rotation;
-            initialPosition.parent = transform.parent;
-        }
+        Debug.Log("GrabableNote script initialized");
     }
 
     private void OnGrab(SelectEnterEventArgs args)
     {
-        wasGrabbed = true;
-
-        if (audioSource != null && grabSound != null)
-        {
-            audioSource.PlayOneShot(grabSound);
-        }
+        Debug.Log("Note grabbed!");
     }
 
     private void OnRelease(SelectExitEventArgs args)
     {
-        if (audioSource != null && releaseSound != null)
-        {
-            audioSource.PlayOneShot(releaseSound);
-        }
+        Debug.Log("Note released!");
     }
 }
