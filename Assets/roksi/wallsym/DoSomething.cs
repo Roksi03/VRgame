@@ -6,6 +6,7 @@ public class DoSomething : MonoBehaviour
 
     private string LastClicked = "";
     public bool CanClick;
+    public bool Good;
 
     private void  Awake()
     {
@@ -29,6 +30,7 @@ public class DoSomething : MonoBehaviour
         {
             Debug.Log("Dobra kolejnosc");
             LastClicked = "";
+            Good = true;
         }
         else
         {
