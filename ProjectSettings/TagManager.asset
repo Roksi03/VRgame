@@ -12,6 +12,7 @@ TagManager:
   - click3
   - click4
   - click5
+  - b
   layers:
   - Default
   - TransparentFX

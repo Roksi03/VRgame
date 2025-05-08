@@ -9,6 +9,7 @@ public class MainConsol : MonoBehaviour
 
 
     [SerializeField]private DoSomething doSomething;
+    [SerializeField] private Puzzle2 puzzle2;
     private void Start()
     {
         foreach(var s in status)
@@ -21,10 +22,13 @@ public class MainConsol : MonoBehaviour
     {
         if (doSomething.Good == true)
         {
-            for (int i = 0; i < status.Count; i++)
-            {
+            if (!status[0].activeSelf)
                 status[0].SetActive(true);
-            }
+        }
+        else if (puzzle2.p2 == true)
+        {
+            if (!status[1].activeSelf)
+                status[1].SetActive(true);
         }
     }
 }
