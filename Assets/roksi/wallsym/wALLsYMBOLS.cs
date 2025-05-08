@@ -32,8 +32,8 @@ public class wALLsYMBOLS : MonoBehaviour
         if (symbol != null)
         {
             StartCoroutine(spawn());
-            DoSomething.Instance.CanClick = true;
-
+            
+            DoSomething.Instance.CanClick = false;
 
         }
     }
@@ -48,6 +48,7 @@ public class wALLsYMBOLS : MonoBehaviour
             yield return new WaitForSeconds(1);
             Destroy(newSymbol);
             yield return new WaitForSeconds(1);
+            DoSomething.Instance.CanClick = true;
         }
        
 

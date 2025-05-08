@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 
 public class DoSomething : MonoBehaviour
@@ -8,6 +10,11 @@ public class DoSomething : MonoBehaviour
     public bool CanClick;
     public bool Good;
 
+    private int currentStep = 0;
+    private readonly List<string> clickList = new List<string>
+    {
+        "click1" ,"click2","click3","click4","click5"
+    };
     private void  Awake()
     {
         Instance = this;
@@ -20,22 +27,23 @@ public class DoSomething : MonoBehaviour
             Debug.Log("nie mozna");
             return;
         }
-        else if(LastClicked =="" && objectName == "click1")
+      
+        if(currentStep<clickList.Count && objectName == clickList[currentStep])
         {
-            Debug.Log("kliknieto a");
-            LastClicked = "click1";
-            
-        }
-        else if(LastClicked == "click1"&&  objectName == "click2")
-        {
-            Debug.Log("Dobra kolejnosc");
-            LastClicked = "";
-            Good = true;
-        }
-        else
-        {
-            Debug.Log("le");
-            LastClicked = "";
+            Debug.Log($"kliknieto{objectName}");
+            currentStep++;
+
+            if (currentStep == clickList.Count)
+            {
+                Debug.Log("dobrze");
+                Good = true;
+
+            }
+            else
+            {
+                Debug.Log("zle");
+                currentStep = 0;    
+            }
         }
     }
 
