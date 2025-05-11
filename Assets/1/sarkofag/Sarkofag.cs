@@ -2,58 +2,71 @@ using UnityEngine;
 
 public class Sarkofag : MonoBehaviour
 {
-    public Transform lidTransform;
-    public float openAngle = 90f;
-    public float openSpeed = 2f;
     public GameObject keySlot;
 
-    private bool isOpening = false;
+    public Animation lidAnimation;
+
+    public string openAnimationName = "sarkofagLid";
+
     private bool isOpened = false;
-    private float currentAngle = 0f;
-    private Quaternion initialRotation;
 
     private void Start()
     {
-        initialRotation = lidTransform.rotation;
         if (keySlot != null)
         {
             keySlot.SetActive(false);
         }
-    }
 
-    private void Update()
-    {
-        if (isOpening && !isOpened)
+        if (lidAnimation == null)
         {
-            currentAngle += Time.deltaTime * openSpeed;
-            if (currentAngle >= openAngle)
-            {
-                currentAngle = openAngle;
-                isOpened = true;
-                
-                if (keySlot != null)
-                {
-                    keySlot.SetActive(true);
-                }
-            }
+            lidAnimation = GetComponent<Animation>();
 
-            lidTransform. localRotation = initialRotation * Quaternion.Euler(currentAngle, 0, 0);
+            if (lidAnimation == null)
+            {
+                Debug.LogError("nie ma komponentu animator na sarkofagu");
+            }
         }
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
         InteractableObject interactable = other.GetComponent<InteractableObject>();
 
-        if (interactable != null && interactable.objectType == InteractableObject.ObjectType.Crowbar && interactable.isPickedUp && !isOpening)
+        if (interactable != null &&
+            interactable.objectType == InteractableObject.ObjectType.Crowbar && interactable.isPickedUp && !isOpened)
         {
-            isOpening = true;
-
-            AudioSource audioSource = GetComponent<AudioSource>();
-            if (audioSource != null)
-            {
-                audioSource.Play();
-            }
+            OpenSarkofag();
         }
+    }
+
+    private void OpenSarkofag()
+    {
+        isOpened = true;
+
+        if (lidAnimation != null && lidAnimation.GetClip(openAnimationName) != null)
+        {
+            lidAnimation.Play(openAnimationName);
+
+            float animationLength = lidAnimation.GetClip(openAnimationName).length;
+            Invoke("ShowKeySlot", animationLength);
+        }
+        else
+        {
+            Debug.LogError("brak animacji " + openAnimationName);
+
+            ShowKeySlot();
+        }
+
+        AudioSource audioSource = GetComponent<AudioSource>();
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
+    }
+
+    private void ShowKeySlot()
+    {
+        keySlot.SetActive(true);
     }
 }
