@@ -7,12 +7,10 @@ TagManager:
   - Anchor
   - Ball
   - ob
-  - click1
-  - click2
-  - click3
-  - click4
-  - click5
   - b
+  - IG
+  - IC
+  - GC
   layers:
   - Default
   - TransparentFX
