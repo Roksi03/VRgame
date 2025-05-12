@@ -4,14 +4,14 @@ public class LightSource : MonoBehaviour
 {
 
     public bool canIgnite = true;
+    public GameObject fire;
 
-    public ParticleSystem fireEffect;
 
     private void Start()
     {
-        if (fireEffect != null)
+        if (fire != null)
         {
-            fireEffect.Play();
+            fire.SetActive(true);
         }
     }
 }
