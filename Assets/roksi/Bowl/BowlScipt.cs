@@ -7,41 +7,73 @@ public class BowlScipt : MonoBehaviour
 
 
 
-    public GameObject ItemPrefab;
+    public GameObject IGPrefab;
+    public GameObject ICPrefab;
+    public GameObject GCPrefab;
 
     public Transform itemPoint;
 
-    [SerializeField] private List<GameObject> balls = new List<GameObject>();
+    [SerializeField] private List<string> balls = new List<string>();
+    [SerializeField] private List<GameObject> ballObjects = new List<GameObject>();
 
-    private void Start()
+  
+
+
+    void SpawnSphere(string name1 ,string name2)
     {
-        
-       
+      HashSet<string> combo = new HashSet<string> { name1, name2 };
+
+        if(combo.SetEquals(new HashSet<string> { "gold", "iron" }))
+        {
+            Instantiate(IGPrefab,itemPoint.position,Quaternion.identity);
+        }
+        else if(combo.SetEquals(new HashSet<string> { "gold", "copper" }))
+        {
+            Instantiate(GCPrefab,itemPoint.position,Quaternion.identity);
+        }
+        else if(combo.SetEquals(new HashSet<string> { "iron", "copper" }))
+        {
+            Instantiate(ICPrefab,itemPoint.position,Quaternion.identity);
+        }
     }
+
+
+
+
+
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Ball" )&& !balls.Contains(other.gameObject))
+
+        ItemNamesforBowl n =other.GetComponent<ItemNamesforBowl>();
+
+        if(n != null && !balls.Contains(n.Namee))
         {
-            Debug.Log("kulka");
-           
-            balls.Add(other.gameObject);
-        }
-        if(balls.Count == 2)
-        {
-            foreach(GameObject ball in balls)
+            balls.Add(n.Namee);
+            ballObjects.Add(other.gameObject);
+
+            if(balls.Count == 2)
             {
-                Destroy(ball);
+                SpawnSphere(balls[0], balls[1]);
+                
+                Destroy(ballObjects[0]);
+                Destroy(ballObjects[1]);
+
+                balls.Clear();
+                ballObjects.Clear();
             }
-           balls.Clear();
-          
-            GameObject newItem = Instantiate(ItemPrefab, itemPoint.position, itemPoint.rotation);
+
+            
         }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.CompareTag("Ball")&& balls.Contains(other.gameObject))
-        {
-            balls.Remove(other.gameObject);
-        }
+
+       
+
+
+
+
+
+
+
+
     }
 }
