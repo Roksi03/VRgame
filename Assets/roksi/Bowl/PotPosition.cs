@@ -41,7 +41,7 @@ public class PotPosition : MonoBehaviour
     {
         if (animator == null) return;
 
-        isMoved =!isMoved;
+        isMoved = !isMoved;
         animator.SetFloat("Moved",isMoved ? 1f:-1f);
         
     }
