@@ -11,6 +11,8 @@ public class BowlScipt : MonoBehaviour
     public GameObject ICPrefab;
     public GameObject GCPrefab;
 
+    public GameObject MainSphere;
+
     public Transform itemPoint;
 
     [SerializeField] private List<string> balls = new List<string>();
@@ -34,6 +36,18 @@ public class BowlScipt : MonoBehaviour
         else if(combo.SetEquals(new HashSet<string> { "iron", "copper" }))
         {
             Instantiate(ICPrefab,itemPoint.position,Quaternion.identity);
+        }
+        else if(combo.SetEquals(new HashSet<string> { "gold", "ic" }))
+        {
+            Instantiate(MainSphere,itemPoint.position,Quaternion.identity);
+        }
+        else if (combo.SetEquals(new HashSet<string> { "iron", "gc" }))
+        {
+            Instantiate(MainSphere, itemPoint.position, Quaternion.identity);
+        }
+        else if (combo.SetEquals(new HashSet<string> { "copper", "ig" }))
+        {
+            Instantiate(MainSphere, itemPoint.position, Quaternion.identity);
         }
     }
 

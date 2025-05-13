@@ -11,8 +11,8 @@ public class PotPosition : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
-    private Vector3 firstpos;
-    private Vector3 lastpos = new Vector3(11, -10, 4);
+   
+    
 
     bool isMoved = false;
 
@@ -25,10 +25,7 @@ public class PotPosition : MonoBehaviour
             xr.selectEntered.AddListener(PotPos);
         }
 
-        if ( bowl != null)
-        {
-            firstpos = bowl.transform.position;
-        }
+       
     }
     private void OnDestroy()
     {
