@@ -6,7 +6,7 @@ public class DoSomething : MonoBehaviour
 {
    public static DoSomething Instance;
 
-    private string LastClicked = "";
+  
     public bool CanClick;
     public bool Good;
 
@@ -39,11 +39,13 @@ public class DoSomething : MonoBehaviour
                 Good = true;
 
             }
-            else
-            {
-                Debug.Log("zle");
-                currentStep = 0;    
-            }
+            
+        }
+        else
+        {
+            Debug.Log("zle");
+            currentStep = 0;
+
         }
     }
 

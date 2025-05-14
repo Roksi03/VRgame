@@ -4,9 +4,11 @@ public class Sarkofag : MonoBehaviour
 {
     public GameObject keySlot;
 
-    public Animation lidAnimation;
+    public Animator lidAnimator;
 
-    public string openAnimationName = "sarkofagLid";
+    public string openTriggerName = "Open";
+
+    public float animationDuration = 1.5f;
 
     private bool isOpened = false;
 
@@ -17,13 +19,19 @@ public class Sarkofag : MonoBehaviour
             keySlot.SetActive(false);
         }
 
-        if (lidAnimation == null)
+        if (lidAnimator == null)
         {
-            lidAnimation = GetComponent<Animation>();
+            lidAnimator = GetComponent<Animator>();
 
-            if (lidAnimation == null)
+            if (lidAnimator == null)
             {
-                Debug.LogError("nie ma komponentu animator na sarkofagu");
+                // Spróbuj znaleŸæ komponent na dzieciach obiektu
+                lidAnimator = GetComponentInChildren<Animator>();
+
+                if (lidAnimator == null)
+                {
+                    Debug.LogError("nie dodano komponentu animator");
+                }
             }
         }
     }
@@ -44,17 +52,15 @@ public class Sarkofag : MonoBehaviour
     {
         isOpened = true;
 
-        if (lidAnimation != null && lidAnimation.GetClip(openAnimationName) != null)
+        if (lidAnimator != null)
         {
-            lidAnimation.Play(openAnimationName);
+            lidAnimator.SetTrigger(openTriggerName);
 
-            float animationLength = lidAnimation.GetClip(openAnimationName).length;
-            Invoke("ShowKeySlot", animationLength);
+            Invoke("ShowKeySlot", animationDuration);
         }
         else
         {
-            Debug.LogError("brak animacji " + openAnimationName);
-
+            Debug.LogError("nie dodano animatora");
             ShowKeySlot();
         }
 
@@ -67,6 +73,9 @@ public class Sarkofag : MonoBehaviour
 
     private void ShowKeySlot()
     {
-        keySlot.SetActive(true);
+        if (keySlot != null)
+        {
+            keySlot.SetActive(true);
+        }
     }
 }

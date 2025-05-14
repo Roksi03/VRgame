@@ -48,13 +48,13 @@ public class wALLsYMBOLS : MonoBehaviour
             yield return new WaitForSeconds(1);
             Destroy(newSymbol);
             yield return new WaitForSeconds(1);
-            DoSomething.Instance.CanClick = true;
+          
         }
-       
 
 
-        
-        
-      
+
+        DoSomething.Instance.CanClick = true;
+
+
     }
 }

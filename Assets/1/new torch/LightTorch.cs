@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class LightTorch : MonoBehaviour
 {
-    public ParticleSystem fireParticles;
     public Light torchLight;
+    public GameObject childObjectToActivate;
 
     private bool isLit = false;
 
@@ -11,16 +11,25 @@ public class LightTorch : MonoBehaviour
     public Renderer torchRenderer;
     public int materialIndex = 0;
 
+    public Material childLitMaterial;
+    public Renderer childRenderer;
+
     private void Start()
     {
-        if (fireParticles != null)
-        {
-            fireParticles.Stop();
-        }
 
         if (torchLight != null)
         {
             torchLight.enabled = false;
+        }
+
+        if (childObjectToActivate != null)
+        {
+            childObjectToActivate.SetActive(false);
+
+            if (childRenderer == null)
+            {
+                childRenderer = childObjectToActivate.GetComponent<Renderer>();
+            }
         }
     }
 
@@ -48,11 +57,6 @@ public class LightTorch : MonoBehaviour
 
         isLit = true;
 
-        if (fireParticles != null)
-        {
-            fireParticles.Play();
-        }
-
         if (torchLight != null)
         {
             torchLight.enabled = true;
@@ -63,6 +67,19 @@ public class LightTorch : MonoBehaviour
             Material[] materials = torchRenderer.materials;
             materials[materialIndex] = litMaterial;
             torchRenderer.materials = materials;
+        }
+
+        if (childObjectToActivate != null)
+        {
+            childObjectToActivate.SetActive(true);
+
+            if (childRenderer != null && childLitMaterial != null)
+            {
+                Material[] childMaterials = childRenderer.materials;
+
+                childMaterials[0] = childLitMaterial;
+                childRenderer.materials = childMaterials;
+            }
         }
     }
 }
