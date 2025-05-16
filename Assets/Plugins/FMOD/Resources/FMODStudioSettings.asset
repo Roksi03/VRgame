@@ -561,6 +561,7 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
+  - ambient
   - sfx
   BanksToLoad: []
   LiveUpdatePort: 9264
