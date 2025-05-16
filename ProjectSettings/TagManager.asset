@@ -11,6 +11,8 @@ TagManager:
   - IG
   - IC
   - GC
+  - VRController
+  - lightSource
   layers:
   - Default
   - TransparentFX
