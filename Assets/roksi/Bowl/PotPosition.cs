@@ -39,6 +39,7 @@ public class PotPosition : MonoBehaviour
 
     private void PotPos(SelectEnterEventArgs ar)
     {
+        Debug.Log("animacja");
         if (animator == null) return;
 
         isMoved = !isMoved;
