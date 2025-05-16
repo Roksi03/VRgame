@@ -5124,6 +5124,13 @@ MonoBehaviour:
       Data3: -118809184
       Data4: 1422554763
     Path: event:/torch ignite
+  <music>k__BackingField:
+    Guid:
+      Data1: 1161258002
+      Data2: 1318630472
+      Data3: 1998680993
+      Data4: -2112395289
+    Path: event:/egypt ambient 2D
 --- !u!1 &564796391
 GameObject:
   m_ObjectHideFlags: 0
@@ -12919,6 +12926,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 641ce843f13b63e4d95a9f45d1a79f79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterVolume: 1
+  ambientVolume: 1
+  SFXVolume: 0.225
 --- !u!1 &1416615533
 GameObject:
   m_ObjectHideFlags: 0
@@ -17651,7 +17661,7 @@ MonoBehaviour:
   EventPlayTrigger: 3
   EventStopTrigger: 2
   AllowFadeout: 1
-  TriggerOnce: 0
+  TriggerOnce: 1
   Preload: 0
   NonRigidbodyVelocity: 0
   Params: []
