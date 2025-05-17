@@ -27,7 +27,7 @@ public class ClickSym : MonoBehaviour
     void ClickSymbols(SelectEnterEventArgs ar)
     {
         Debug.Log("klikniete");
-        DoSomething.Instance.ClickedObject(SymName);
+        DoSomething.Instance.ClickedObject(SymName,transform);
 
     }
 
