@@ -1,7 +1,10 @@
+using FMOD.Studio;
 using UnityEngine;
 
 public class LightTorch : MonoBehaviour
 {
+    private EventInstance torchIgnite;
+
     public Light torchLight;
     public GameObject childObjectToActivate;
 
@@ -31,6 +34,9 @@ public class LightTorch : MonoBehaviour
                 childRenderer = childObjectToActivate.GetComponent<Renderer>();
             }
         }
+
+        torchIgnite = AudioManager.instance.CreateEventInstance(FMODEvents.instance.torchIgnite);
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -80,6 +86,22 @@ public class LightTorch : MonoBehaviour
                 childMaterials[0] = childLitMaterial;
                 childRenderer.materials = childMaterials;
             }
+        }
+
+        UpdateSound();
+    }
+
+    private void UpdateSound()
+    {
+        PLAYBACK_STATE playbackState;
+        torchIgnite.getPlaybackState(out playbackState);
+        if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+        {
+            torchIgnite.start();
+        }
+        else
+        {
+            torchIgnite.stop(STOP_MODE.ALLOWFADEOUT);
         }
     }
 }

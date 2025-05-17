@@ -20,8 +20,9 @@ public class DoSomething : MonoBehaviour
         Instance = this;
     }
      
-    public void ClickedObject(string objectName)
+    public void ClickedObject(string objectName, Transform spawnPoint)
     {
+
         if (!CanClick)
         {
             Debug.Log("nie mozna");
@@ -30,8 +31,19 @@ public class DoSomething : MonoBehaviour
       
         if(currentStep<clickList.Count && objectName == clickList[currentStep])
         {
+            
             Debug.Log($"kliknieto{objectName}");
+
+
+            if(wALLsYMBOLS.instance != null && wALLsYMBOLS.instance.symbol.Length > currentStep)
+            {
+                GameObject symPrefab = wALLsYMBOLS.instance.symbol[currentStep];
+                Instantiate(symPrefab, spawnPoint.position,Quaternion.identity);
+            }
+
             currentStep++;
+
+           
 
             if (currentStep == clickList.Count)
             {

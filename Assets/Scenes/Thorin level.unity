@@ -7104,8 +7104,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189445374}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.427, y: 11.511, z: 4.558}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -13.427004, y: 11.715, z: 4.603999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7123,9 +7123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4190daa0feb7596418db0257eb0e7850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IGPrefab: {fileID: 2516185819585294851, guid: c4567734a18f09940a977807f0467311, type: 3}
-  ICPrefab: {fileID: 3642557718907058877, guid: 0cd39248c6d463442a382bfed428674f, type: 3}
-  GCPrefab: {fileID: 8652732341907988349, guid: 1679ad4c3f78e2443801af2616656bbd, type: 3}
+  IGPrefab: {fileID: 1278492858301326473, guid: ba6e53205ed78c54182f322067bd2669, type: 3}
+  ICPrefab: {fileID: 7532547566421416385, guid: 0a2f49f6932a7684da7938c0d03d1de4, type: 3}
+  GCPrefab: {fileID: 3347682507813369396, guid: c529dff0c4ce2b04984e4051ad46d5db, type: 3}
   MainSphere: {fileID: 1894790546591704492, guid: 9d46c66212784cf49961fb54db6a3c2c, type: 3}
   itemPoint: {fileID: 1088280237}
   balls: []
@@ -7149,8 +7149,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.43339562, y: 0.24768871, z: 0.58780265}
-  m_Center: {x: -0.01071918, y: -0.37615564, z: 0.08960688}
+  m_Size: {x: 0.3547761, y: 0.24768871, z: 0.4470802}
+  m_Center: {x: -0.050028943, y: -0.37615564, z: 0.066676706}
 --- !u!1 &204051928
 GameObject:
   m_ObjectHideFlags: 0
@@ -7547,6 +7547,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bar_clean_gold
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 17f336a3ee3933344898b554ed7c38c1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -7621,7 +7625,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 65
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -7988,6 +7992,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bar_clean_iron
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 49f4939c4685ffc46bad4b56ba43edf4, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -8062,7 +8070,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 65
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -11656,6 +11664,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bar_clean_clay
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 03e9eb6c4aed1ac4db967a79fef77404, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -11730,7 +11742,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 65
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -19386,7 +19398,7 @@ Transform:
   m_GameObject: {fileID: 1088280236}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.548, y: 11.272752, z: 4.76}
+  m_LocalPosition: {x: -13.5, y: 11.558, z: 4.606}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56594,7 +56606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

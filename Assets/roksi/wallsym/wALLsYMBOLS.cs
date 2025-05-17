@@ -5,6 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class wALLsYMBOLS : MonoBehaviour
 {
+   public static wALLsYMBOLS instance;
     public GameObject[]symbol;
 
     public Transform[] point;
@@ -13,6 +14,10 @@ public class wALLsYMBOLS : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
         var interactable = GetComponent<XRSimpleInteractable>();
         if (interactable != null)
         {
@@ -47,7 +52,7 @@ public class wALLsYMBOLS : MonoBehaviour
             GameObject newSymbol = Instantiate(symbol[i], point[i].position, Quaternion.identity);
             yield return new WaitForSeconds(1);
             Destroy(newSymbol);
-            yield return new WaitForSeconds(1);
+           
           
         }
 
