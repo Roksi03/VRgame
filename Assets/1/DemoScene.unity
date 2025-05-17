@@ -12927,8 +12927,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterVolume: 1
-  ambientVolume: 1
-  SFXVolume: 0.225
+  ambientVolume: 0
+  SFXVolume: 0.588
 --- !u!1 &1416615533
 GameObject:
   m_ObjectHideFlags: 0
