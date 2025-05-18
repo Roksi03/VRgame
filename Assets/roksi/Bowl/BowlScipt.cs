@@ -90,4 +90,15 @@ public class BowlScipt : MonoBehaviour
 
 
     }
+    private void OnTriggerExit(Collider other)
+    {
+        ItemNamesforBowl n = other.GetComponent<ItemNamesforBowl>();
+
+        if (n != null)
+        {
+            balls.Clear();
+
+            ballObjects.Clear();
+        }
+    }
 }
