@@ -10,7 +10,7 @@ public class wALLsYMBOLS : MonoBehaviour
 
     public Transform[] point;
 
-    private XRSimpleInteractable interactable;
+    
 
     private void Awake()
     {
@@ -18,21 +18,11 @@ public class wALLsYMBOLS : MonoBehaviour
         {
             instance = this;
         }
-        var interactable = GetComponent<XRSimpleInteractable>();
-        if (interactable != null)
-        {
-            interactable.selectEntered.AddListener(symbolsSpawn);
-        }
+       
     }
 
-    private void OnDestroy()
-    {
-        if (interactable != null)
-        {
-            interactable.selectEntered.RemoveListener(symbolsSpawn);
-        }
-    }
-    public void symbolsSpawn(SelectEnterEventArgs a)
+  
+    public void symbolsSpawn()
     {
         if (symbol != null)
         {
