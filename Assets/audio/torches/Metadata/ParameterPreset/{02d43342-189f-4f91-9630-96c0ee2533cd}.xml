@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{02d43342-189f-4f91-9630-96c0ee2533cd}">
+		<property name="name">
+			<value>crossfade loop</value>
+		</property>
+		<relationship name="folder">
+			<destination>{afa60e86-eb91-4755-a213-54697372214e}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{977c7889-1a69-4144-9f06-8ad439c92330}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{977c7889-1a69-4144-9f06-8ad439c92330}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
