@@ -1,0 +1,6 @@
+{141edeb6-a2fd-442c-aa9d-7af9dccb0651} bank:/Master
+{8c03fe62-d386-086e-2cd4-f0072d3800c9} bank:/Master.strings
+{30ce1c0c-65b0-45af-8f7e-861bbc077c65} bus:/
+{5a1e2248-243d-4148-938c-868bd938831b} bus:/Reverb
+{a531fb8a-a813-4811-a01d-ebf88b76ca54} event:/torch burning
+{977c7889-1a69-4144-9f06-8ad439c92330} parameter:/crossfade loop
