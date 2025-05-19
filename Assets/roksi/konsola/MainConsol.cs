@@ -10,6 +10,10 @@ public class MainConsol : MonoBehaviour
 
     [SerializeField]private DoSomething doSomething;
     [SerializeField] private Puzzle2 puzzle2;
+
+    [SerializeField] private int torchStatusIndex = 2;
+    private bool torchPuzzleCompleted = false;
+
     private void Start()
     {
         foreach(var s in status)
@@ -29,6 +33,20 @@ public class MainConsol : MonoBehaviour
         {
             if (!status[1].activeSelf)
                 status[1].SetActive(true);
+        }
+
+         if (!torchPuzzleCompleted)
+        {
+            if (LightTorch.AreAllTorchesLit())
+            {
+                torchPuzzleCompleted = true;
+
+                if (torchStatusIndex < status.Count)
+                {
+                    status[torchStatusIndex].SetActive(true);
+                    Debug.Log("updated konsola po zagadce z pochodniami");
+                }
+            }
         }
     }
 }

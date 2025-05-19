@@ -85,6 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   torchLight: {fileID: 900993181432689453}
   childObjectToActivate: {fileID: 8521032437530393878}
+  isLit: 0
   litMaterial: {fileID: 2100000, guid: f3020c61b061aa7499e0631b26285dd9, type: 2}
   torchRenderer: {fileID: 2389285033825077269}
   materialIndex: 0

@@ -1,4 +1,6 @@
 using FMOD.Studio;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LightTorch : MonoBehaviour
@@ -8,7 +10,9 @@ public class LightTorch : MonoBehaviour
     public Light torchLight;
     public GameObject childObjectToActivate;
 
-    private bool isLit = false;
+    [SerializeField] private bool isLit = false;
+
+    public bool isTorchLit { get { return isLit; } }
 
     public Material litMaterial;
     public Renderer torchRenderer;
@@ -16,6 +20,33 @@ public class LightTorch : MonoBehaviour
 
     public Material childLitMaterial;
     public Renderer childRenderer;
+
+    private static List<LightTorch> allTorches = new List<LightTorch>();
+    private static bool allTorchesLit = false;
+    public static bool AreAllTorchesLit()
+    {
+        return allTorchesLit;
+    }
+
+    private void OnEnable()
+    {
+        if (!allTorches.Contains(this))
+        {
+            allTorches.Add(this);
+        }
+
+        CheckAllTorchesLitStatus();
+    }
+
+    private void OnDisable()
+    {
+        if (allTorches.Contains(this))
+        {
+            allTorches.Remove(this);
+        }
+
+        CheckAllTorchesLitStatus();
+    }
 
     private void Start()
     {
@@ -89,6 +120,8 @@ public class LightTorch : MonoBehaviour
         }
 
         UpdateSound();
+
+        CheckAllTorchesLitStatus();
     }
 
     private void UpdateSound()
@@ -102,6 +135,22 @@ public class LightTorch : MonoBehaviour
         else
         {
             torchIgnite.stop(STOP_MODE.ALLOWFADEOUT);
+        }
+    }
+
+    private static void CheckAllTorchesLitStatus()
+    {
+        if (allTorches.Count == 0)
+        {
+            allTorchesLit = false;
+            return;
+        }
+
+        allTorchesLit = !allTorches.Any(torch => torch == null || !torch.isLit);
+
+        if (allTorchesLit)
+        {
+            Debug.Log("wszystkie torche zapalone");
         }
     }
 }
