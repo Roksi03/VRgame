@@ -1,11 +1,18 @@
+using FMOD.Studio;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using FMOD.Studio;
+using FMODUnity;
 
 public class KeySlot : MonoBehaviour
 {
+    private EventInstance wallMove;
+
     public GameObject wall;
     public float riseHeight = 3f;
     public float riseSpeed = 1f;
+
+    public StudioEventEmitter wallMoveEmitter;
 
     private bool isKeyInserted = false;
     private bool isWallRising = false;
@@ -21,6 +28,18 @@ public class KeySlot : MonoBehaviour
             wallInitialPosition = wall.transform.position;
             wallTargetPosition = wallInitialPosition + new Vector3(0, riseHeight, 0);
         }
+
+        if (wallMoveEmitter == null)
+        {
+            wallMoveEmitter = GetComponent<StudioEventEmitter>();
+
+            if (wallMoveEmitter == null && wall != null)
+            {
+                wallMoveEmitter = wall.GetComponent<StudioEventEmitter>();
+            }
+        }
+
+        wallMove = AudioManager.instance.CreateEventInstance(FMODEvents.instance.wallMove);
     }
 
     // Update is called once per frame
@@ -62,12 +81,15 @@ public class KeySlot : MonoBehaviour
 
             isWallRising = true;
 
-            AudioSource audioSource = GetComponent<AudioSource>();
-            if (audioSource != null)
-            {
-                audioSource.Play();
-            }
+            PlayWallMoveSound();
+        }
+    }
 
+    private void PlayWallMoveSound()
+    {
+        if (wallMoveEmitter != null && !wallMoveEmitter.IsPlaying())
+        {
+            wallMoveEmitter.Play();
         }
     }
 }

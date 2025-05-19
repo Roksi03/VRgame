@@ -19,8 +19,8 @@ MonoBehaviour:
     Data3: -118809184
     Data4: 1422554763
   Banks:
-  - {fileID: 7411798084871079152}
-  - {fileID: 81263310770598389}
+  - {fileID: 5131489221153417740}
+  - {fileID: 6372413985836061271}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -53,6 +53,26 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-6991834403027815075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/audio/torches 2/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638832956429074429
+  FileSizes:
+  - Name: Desktop
+    Value: 1236
+  Exists: 1
 --- !u!114 &-5874272943596224487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,7 +92,7 @@ MonoBehaviour:
     Data3: -685559885
     Data4: 1788434689
   Banks:
-  - {fileID: 81263310770598389}
+  - {fileID: 6372413985836061271}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -80,6 +100,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-5736890448784067982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/wall_moving
+  m_EditorClassIdentifier: 
+  Path: event:/wall_moving
+  Guid:
+    Data1: 1356989679
+    Data2: 1184657652
+    Data3: -1211713626
+    Data4: -143022064
+  Banks:
+  - {fileID: 6372413985836061271}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6500
 --- !u!114 &-4382680380058121940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +146,7 @@ MonoBehaviour:
     Data3: 1998680993
     Data4: -2112395289
   Banks:
-  - {fileID: 5120326884303842989}
+  - {fileID: 3411511584072558691}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -120,62 +167,23 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 178173881094578917}
-  - {fileID: 5120326884303842989}
-  - {fileID: 7411798084871079152}
-  - {fileID: 81263310770598389}
+  - {fileID: -6991834403027815075}
+  - {fileID: 3411511584072558691}
+  - {fileID: 5131489221153417740}
+  - {fileID: 6372413985836061271}
   EditorEvents:
   - {fileID: -8749772307829147861}
   - {fileID: 8819588144554171271}
   - {fileID: -4382680380058121940}
   - {fileID: -5874272943596224487}
+  - {fileID: -5736890448784067982}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 7411798084871079152}
+  - {fileID: 5131489221153417740}
   StringsBanks:
-  - {fileID: 178173881094578917}
-  cacheTime: 638832565077984660
+  - {fileID: -6991834403027815075}
+  cacheTime: 638832982554084006
   cacheVersion: 131624
---- !u!114 &81263310770598389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/sfx.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/audio/torches/Build/Desktop/sfx.bank
-  Name: sfx
-  StudioPath: bank:/sfx
-  lastModified: 638832565077984660
-  FileSizes:
-  - Name: Desktop
-    Value: 2435232
-  Exists: 1
---- !u!114 &178173881094578917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/audio/torches/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638832565077634885
-  FileSizes:
-  - Name: Desktop
-    Value: 1194
-  Exists: 1
 --- !u!114 &2278514325023604195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,7 +208,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &5120326884303842989
+--- !u!114 &3411511584072558691
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -212,15 +220,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/ambient.bank
   m_EditorClassIdentifier: 
-  Path: Assets/audio/torches/Build/Desktop/ambient.bank
+  Path: Assets/audio/torches 2/Build/Desktop/ambient.bank
   Name: ambient
   StudioPath: bank:/ambient
-  lastModified: 638832565077788702
+  lastModified: 638830104009507480
   FileSizes:
   - Name: Desktop
     Value: 6495776
   Exists: 1
---- !u!114 &7411798084871079152
+--- !u!114 &5131489221153417740
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -232,13 +240,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Master.bank
   m_EditorClassIdentifier: 
-  Path: Assets/audio/torches/Build/Desktop/Master.bank
+  Path: Assets/audio/torches 2/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638832565077634885
+  lastModified: 638832956429039257
   FileSizes:
   - Name: Desktop
     Value: 2421920
+  Exists: 1
+--- !u!114 &6372413985836061271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/sfx.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/audio/torches 2/Build/Desktop/sfx.bank
+  Name: sfx
+  StudioPath: bank:/sfx
+  lastModified: 638832982554084006
+  FileSizes:
+  - Name: Desktop
+    Value: 2564384
   Exists: 1
 --- !u!114 &8819588144554171271
 MonoBehaviour:
@@ -259,7 +287,7 @@ MonoBehaviour:
     Data3: 395502745
     Data4: 253295325
   Banks:
-  - {fileID: 81263310770598389}
+  - {fileID: 6372413985836061271}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
