@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{2d8e4497-468d-4104-a118-d3901ca39c0c}">
+		<property name="name">
+			<value>igniteTorch_intensity</value>
+		</property>
+		<relationship name="folder">
+			<destination>{afa60e86-eb91-4755-a213-54697372214e}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{58582fe1-8227-4e87-9ace-874d6ad80937}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{58582fe1-8227-4e87-9ace-874d6ad80937}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

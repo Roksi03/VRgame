@@ -536,8 +536,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: Assets/audio/torches/torches.fspro
-  sourceBankPath: Assets/audio/torches/Build
+  sourceProjectPath: Assets/audio/torches 2/torches.fspro
+  sourceBankPath: Assets/audio/torches 2/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1

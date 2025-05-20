@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{fdd5bf92-84fe-4496-9686-5c6f31df77fc}">
+		<property name="name">
+			<value>wall_move</value>
+		</property>
+		<relationship name="folder">
+			<destination>{afa60e86-eb91-4755-a213-54697372214e}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{528c6edb-cab6-417c-bbdd-9ac422428417}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{528c6edb-cab6-417c-bbdd-9ac422428417}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

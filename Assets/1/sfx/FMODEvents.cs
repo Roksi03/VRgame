@@ -9,6 +9,9 @@ public class FMODEvents : MonoBehaviour
     [field: Header("torch ignite")]
     [field: SerializeField] public EventReference torchIgnite { get; private set; }
 
+    [field: Header("wall move")]
+    [field: SerializeField] public EventReference wallMove { get; private set; }
+
     [field: Header("Music")]
     [field: SerializeField] public EventReference music {  get; private set; }
    public static FMODEvents instance {  get; private set; }

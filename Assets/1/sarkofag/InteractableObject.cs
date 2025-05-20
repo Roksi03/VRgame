@@ -10,14 +10,30 @@ public class InteractableObject : MonoBehaviour
     public bool isPickedUp = false;
 
     private XRGrabInteractable grabInteractable;
+    private Rigidbody rb;
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            rb = gameObject.AddComponent<Rigidbody>();
+        }
+
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+
         grabInteractable = GetComponent<XRGrabInteractable>();
         if (grabInteractable == null)
         {
             grabInteractable = gameObject.AddComponent<XRGrabInteractable>();
         }
+
+        grabInteractable.throwOnDetach = true;
+        grabInteractable.retainTransformParent = false;
+
+        grabInteractable.trackPosition = true;
+        grabInteractable.smoothPosition = true;
 
         grabInteractable.selectEntered.AddListener(OnPickUp);
         grabInteractable.selectExited.AddListener(OnPutDown);
