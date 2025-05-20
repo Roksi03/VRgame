@@ -24,7 +24,7 @@ public class MainConsol : MonoBehaviour
     Vector3 startPos;
     Vector3 endPos;
 
-    float speed = 3f;
+    float speed = 0.7f;
     float moveP = 0f;
     bool moveS = false;
 
