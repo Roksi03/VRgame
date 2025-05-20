@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -16,12 +18,18 @@ public class MainConsol : MonoBehaviour
 
     [SerializeField] GameObject sarko;
 
+    [SerializeField] private GameObject soundEmitterObject;
+    [SerializeField] private StudioEventEmitter sarkofagMoveEmitter;
+
     Vector3 startPos;
     Vector3 endPos;
 
     float speed = 3f;
     float moveP = 0f;
     bool moveS = false;
+
+    private bool soundPlayed = false;
+    private EventInstance sarkofagMove;
 
 
     private void Start()
@@ -33,6 +41,13 @@ public class MainConsol : MonoBehaviour
 
         startPos = sarko.transform.position;
         endPos = sarko.transform.position - new Vector3(0, 0, 1f);
+
+        sarkofagMove = AudioManager.instance.CreateEventInstance(FMODEvents.instance.sarkofagMove);
+
+        if (sarkofagMoveEmitter == null && soundEmitterObject != null)
+        {
+            sarkofagMoveEmitter = soundEmitterObject.GetComponent<StudioEventEmitter>();
+        }
     }
 
     private void Update()
@@ -64,14 +79,31 @@ public class MainConsol : MonoBehaviour
          if(status.TrueForAll(s => s.activeSelf))
         {
            moveS = true;
+
+            if (!soundPlayed)
+            {
+                PlaySarkofagMoveSound();
+                soundPlayed = true;
+            }
         }
         if (moveS && moveP < 1f)
         {
             moveP += Time.deltaTime * speed;
             sarko.transform.position = Vector3.Lerp(startPos, endPos, moveP);
         }
+    }
+
+    private void PlaySarkofagMoveSound()
+    {
+        if (sarkofagMoveEmitter != null && !sarkofagMoveEmitter.IsPlaying())
         {
-            
+            sarkofagMoveEmitter.Play();
+            Debug.Log("playing dzwiek przesuwania sarkofagu");
+        }
+        else
+        {
+            Debug.Log("playing dzwiek przesuwania sarkofagu thru event instance");
+            sarkofagMove.start();
         }
     }
 }
