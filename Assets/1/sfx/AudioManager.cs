@@ -17,7 +17,7 @@ public class AudioManager : MonoBehaviour
     private Bus masterBus;
     private Bus ambientBus;
     private Bus SFXBus;
-   public static AudioManager instance {  get; private set; }
+    public static AudioManager instance {  get; private set; }
 
     private List<EventInstance> eventInstances;
 

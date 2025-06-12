@@ -68,7 +68,7 @@ MonoBehaviour:
   Path: Assets/audio/torches 2/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638833435874668098
+  lastModified: 638853152200687304
   FileSizes:
   - Name: Desktop
     Value: 1236
@@ -182,7 +182,7 @@ MonoBehaviour:
   - {fileID: 5131489221153417740}
   StringsBanks:
   - {fileID: -6991834403027815075}
-  cacheTime: 638833435874851761
+  cacheTime: 638853152200932276
   cacheVersion: 131624
 --- !u!114 &2278514325023604195
 MonoBehaviour:
@@ -223,7 +223,7 @@ MonoBehaviour:
   Path: Assets/audio/torches 2/Build/Desktop/ambient.bank
   Name: ambient
   StudioPath: bank:/ambient
-  lastModified: 638833435874851761
+  lastModified: 638853152200852111
   FileSizes:
   - Name: Desktop
     Value: 6495776
@@ -243,7 +243,7 @@ MonoBehaviour:
   Path: Assets/audio/torches 2/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638833435874668098
+  lastModified: 638853152200687304
   FileSizes:
   - Name: Desktop
     Value: 2421920
@@ -263,7 +263,7 @@ MonoBehaviour:
   Path: Assets/audio/torches 2/Build/Desktop/sfx.bank
   Name: sfx
   StudioPath: bank:/sfx
-  lastModified: 638833435874851761
+  lastModified: 638853152200932276
   FileSizes:
   - Name: Desktop
     Value: 2564384
